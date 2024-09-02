@@ -1,11 +1,12 @@
 import { Row, Col, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addFavourite, removeFavourite } from "../redux/reducers";
 
 const Job = ({ data }) => {
   const dispatch = useDispatch();
   const favourites = useSelector((state) => state.favourites);
+  const navigate = useNavigate();
 
   const isFavourite = favourites.includes(data.company_name);
 
@@ -29,6 +30,9 @@ const Job = ({ data }) => {
       </Col>
       <Col xs={3}>
         <Button onClick={handleFavourite}>{isFavourite ? "Remove from Favourites" : "Add to Favourites"}</Button>
+      </Col>
+      <Col xs={12} className="mt-3">
+        <Button onClick={() => navigate(-1)}>Go Back</Button>
       </Col>
     </Row>
   );
