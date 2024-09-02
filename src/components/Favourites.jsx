@@ -1,9 +1,10 @@
 import { useSelector } from "react-redux";
-import { Container, Row, Col } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Container, Row, Col, Button } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
 
 const Favourites = () => {
   const favourites = useSelector((state) => state.favourites);
+  const navigate = useNavigate();
 
   return (
     <Container>
@@ -17,6 +18,9 @@ const Favourites = () => {
               </Col>
             </Row>
           ))}
+          <Button onClick={() => navigate(-1)} className="mt-3">
+            Go Back
+          </Button>
         </Col>
       </Row>
     </Container>
