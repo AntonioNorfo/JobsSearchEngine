@@ -1,7 +1,7 @@
 import { Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { addFavourite, removeFavourite } from "../redux/reducers/actions";
+import { addFavourite, removeFavourite } from "../redux/reducers";
 
 const Job = ({ data }) => {
   const dispatch = useDispatch();
