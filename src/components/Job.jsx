@@ -1,14 +1,15 @@
 import { Row, Col, Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { addFavourite, removeFavourite } from "../redux/reducers";
+import { addFavourite } from "../redux/reducers/addFavourites";
+import { removeFavourite } from "../redux/reducers/removeFavourites";
 
 const Job = ({ data }) => {
   const dispatch = useDispatch();
   const favourites = useSelector((state) => state.favourites);
   const navigate = useNavigate();
 
-  const isFavourite = favourites.includes(data.company_name);
+  const isFavourite = Array.isArray(favourites) && favourites.includes(data.company_name);
 
   const handleFavourite = () => {
     if (isFavourite) {
